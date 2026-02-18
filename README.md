@@ -1,34 +1,73 @@
-# Cursor plugin template
+# LocalStack Cursor Plugin
 
-Build and publish Cursor Marketplace plugins from a single repo.
+The official [LocalStack](https://localstack.cloud) plugin for [Cursor](https://cursor.com) — brings local AWS cloud development directly into your IDE.
 
-Two starter plugins are included:
+## What's included
 
-- **starter-simple**: rules and skills only
-- **starter-advanced**: rules, skills, agents, commands, hooks, MCP, and scripts
+### MCP Server
 
-## Getting started
+The plugin bundles the [LocalStack MCP Server](https://github.com/localstack/localstack-mcp-server) (`@localstack/localstack-mcp-server`), giving the AI agent direct access to:
 
-[Use this template](https://github.com/cursor/plugin-template/generate) to create a new repository, then customize:
+| Tool | Description |
+|------|-------------|
+| **Container management** | Start, stop, restart, and check status of LocalStack |
+| **Infrastructure deployment** | Deploy CDK, Terraform, and CloudFormation stacks to LocalStack |
+| **Log analysis** | Analyze LocalStack logs, filter by service, and identify errors |
+| **AWS CLI** | Run AWS CLI commands against LocalStack |
+| **IAM Policy Analyzer** | Enforce and auto-generate least-privilege IAM policies (Pro) |
+| **Cloud Pods** | Save and load state snapshots for reproducible environments (Pro) |
+| **Chaos Engineering** | Inject faults and latency into AWS services (Pro) |
 
-1. `.cursor-plugin/marketplace.json`: set marketplace `name`, `owner`, and `metadata`.
-2. `plugins/*/.cursor-plugin/plugin.json`: set `name` (lowercase kebab-case), `displayName`, `author`, `description`, `keywords`, `license`, and `version`.
-3. Replace placeholder rules, skills, agents, commands, hooks, scripts, and logos.
+### Skills
 
-To add more plugins, see `docs/add-a-plugin.md`.
+Six skills provide contextual knowledge for common LocalStack workflows:
 
-## Single plugin vs multi-plugin
+| Skill | Description |
+|-------|-------------|
+| **localstack** | Container lifecycle management (start, stop, status, config) |
+| **localstack-deploy** | IaC deployment with Terraform, CDK, CloudFormation, and Pulumi |
+| **localstack-state** | State management with local snapshots and Cloud Pods |
+| **localstack-logs** | Log analysis, debugging, and health checks |
+| **localstack-iam** | IAM policy enforcement, analysis, and least-privilege generation |
+| **localstack-extensions** | Extension management and custom extension development |
 
-This template defaults to **multi-plugin** (multiple plugins in one repo).
+## Installation
 
-For a **single plugin**, move your plugin folder contents to the repository root, keep one `.cursor-plugin/plugin.json`, and remove `.cursor-plugin/marketplace.json`.
+Install from the [Cursor Marketplace](https://cursor.com/marketplace) by searching for **LocalStack**. You can also install it via Cursor CLI:
 
-## Submission checklist
+```bash
+cursor plugins install localstack-cursor-plugin
+```
 
-- Each plugin has a valid `.cursor-plugin/plugin.json`.
-- Plugin names are unique, lowercase, and kebab-case.
-- `.cursor-plugin/marketplace.json` entries map to real plugin folders.
-- All frontmatter metadata is present in rule, skill, agent, and command files.
-- Logos are committed and referenced with relative paths.
-- `node scripts/validate-template.mjs` passes.
-- Repository link is ready for submission to the Cursor team (Slack or `kniparko@anysphere.com`).
+## Configuration
+
+### LocalStack Auth Token
+
+To enable Pro features (IAM Policy Analyzer, Cloud Pods, Chaos Engineering), set your `LOCALSTACK_AUTH_TOKEN` as an environment variable with your MCP server configuration.
+
+### LocalStack-specific configuration
+
+To configure any other LocalStack-specific configuration, set the corresponding environment variable in your MCP server configuration. Refer to the [LocalStack configuration documentation](https://docs.localstack.cloud/aws/capabilities/config/configuration/) for more details.
+
+## Project structure
+
+```
+localstack-cursor-plugin/
+├── .cursor-plugin/
+│   └── plugin.json          # Plugin manifest
+├── skills/
+│   ├── localstack-lifecycle/ # Container lifecycle management
+│   ├── iac-deployment/       # Terraform, CDK, CloudFormation, Pulumi
+│   ├── state-management/     # Snapshots and Cloud Pods
+│   ├── logs-analysis/        # Log analysis and debugging
+│   ├── iam-policy-analyzer/  # IAM enforcement and policy generation
+│   └── localstack-extensions/# Extension management
+├── assets/
+│   └── logo.svg              # Plugin logo
+├── mcp.json                  # MCP server configuration
+└── README.md
+```
+
+## License
+
+Apache-2.0

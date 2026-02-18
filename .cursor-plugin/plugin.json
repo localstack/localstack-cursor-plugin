@@ -1,0 +1,26 @@
+{
+  "name": "localstack-cursor-plugin",
+  "displayName": "LocalStack",
+  "version": "0.1.0",
+  "description": "The official LocalStack plugin for Cursor: MCP server integration and skills for local cloud development with AWS service emulation.",
+  "author": {
+    "name": "LocalStack",
+    "email": "info@localstack.cloud"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "localstack",
+    "aws",
+    "cloud",
+    "mcp",
+    "terraform",
+    "cdk",
+    "cloudformation",
+    "lambda",
+    "s3",
+    "dynamodb",
+    "iam",
+    "local-development"
+  ],
+  "logo": "assets/logo.svg"
+}
