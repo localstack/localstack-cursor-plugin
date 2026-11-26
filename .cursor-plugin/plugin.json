@@ -1,8 +1,8 @@
 {
   "name": "localstack-cursor-plugin",
   "displayName": "LocalStack",
-  "version": "0.1.0",
-  "description": "The official LocalStack plugin for Cursor: MCP server integration and skills for local cloud development with AWS service emulation.",
+  "version": "0.2.0",
+  "description": "The official LocalStack plugin for Cursor: MCP server integration and skills for local cloud development with the LocalStack emulators for AWS, Snowflake, and Azure.",
   "author": {
     "name": "LocalStack",
     "email": "info@localstack.cloud"
@@ -20,7 +20,28 @@
     "s3",
     "dynamodb",
     "iam",
-    "local-development"
+    "local-development",
+    "azure",
+    "snowflake",
+    "sam",
+    "pulumi",
+    "chaos-engineering",
+    "app-inspector",
+    "testing",
+    "lstk"
   ],
-  "logo": "assets/logo.svg"
+  "logo": "assets/logo.svg",
+  "variables": {
+    "type": "object",
+    "properties": {
+      "LOCALSTACK_AUTH_TOKEN": {
+        "type": "string",
+        "title": "LocalStack Auth Token",
+        "description": "Your LocalStack Auth Token from https://app.localstack.cloud/workspace/auth-tokens. Required for all LocalStack MCP tools."
+      }
+    },
+    "required": [
+      "LOCALSTACK_AUTH_TOKEN"
+    ]
+  }
 }
