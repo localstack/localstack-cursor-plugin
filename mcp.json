@@ -2,7 +2,10 @@
   "mcpServers": {
     "localstack-mcp-server": {
       "command": "npx",
-      "args": ["-y", "@localstack/localstack-mcp-server"],
+      "args": [
+        "-y",
+        "@localstack/localstack-mcp-server@latest"
+      ],
       "env": {
         "LOCALSTACK_AUTH_TOKEN": "${LOCALSTACK_AUTH_TOKEN}"
       }
